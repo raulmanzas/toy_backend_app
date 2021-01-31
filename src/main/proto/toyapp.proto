@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.learning";
+option java_outer_classname = "Toyapp";
+option objc_class_prefix = "HLW";
+
+package com.learning;
+
+service ToyappService {
+  rpc send (ToyappRequest) returns (ToyappReply) {}
+}
+
+message ToyappRequest {
+  string name = 1;
+}
+
+message ToyappReply {
+  string message = 1;
+}
