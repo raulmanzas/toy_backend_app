@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.learning.generated.grpc";
+option java_outer_classname = "GameBacklog";
+
+package com.learning;
+
+service GameBacklogService {
+  rpc addToBacklog(AddToBacklogRequest) returns (AddToBacklogResponse) {}
+}
+
+enum Platform {
+  NINTENDO_SWITCH = 0;
+  XBOX_ONE = 1;
+  XBOX_ONE_X = 2;
+  XBOX_SERIES_S = 3;
+  XBOX_SERIES_X = 4;
+  PLAYSTATION_4 = 5;
+  PLAYSTATION_4_PRO = 6;
+  PLAYSTATION_5 = 7;
+  WINDOWS = 8;
+}
+
+enum Genre {
+  ACTION = 0;
+  ADVENTURE = 2;
+  RPG = 3;
+  SHOOTER = 4;
+  PUZZLE = 5;
+  RACING = 6;
+  SIMULATOR = 7;
+}
+
+message AddToBacklogRequest {
+  string title = 1;
+  Platform platform = 2;
+  bool finished = 3;
+  int32 rating = 4;
+  repeated Genre genre = 5;
+}
+
+message AddToBacklogResponse {
+  int64 id = 1;
+  string title = 2;
+  Platform platform = 3;
+  bool finished = 4;
+  int32 rating = 5;
+  repeated Genre genre = 6;
+  string creation_date = 7;
+}
