@@ -7,7 +7,8 @@ option java_outer_classname = "GameBacklog";
 package com.learning;
 
 service GameBacklogService {
-  rpc addToBacklog(AddToBacklogRequest) returns (AddToBacklogResponse) {}
+  rpc AddToBacklog(AddToBacklogRequest) returns (AddToBacklogResponse) {}
+  rpc FindGame(FindGameRequest) returns (FindGameResponse) {}
 }
 
 enum Platform {
@@ -45,7 +46,21 @@ message AddToBacklogResponse {
   string title = 2;
   Platform platform = 3;
   bool finished = 4;
-  int32 rating = 5;
+  int32 rating = 5; // Should be an integer in [1,5]
+  repeated Genre genre = 6;
+  string creation_date = 7;
+}
+
+message FindGameRequest {
+  int64 id = 1;
+}
+
+message FindGameResponse {
+  int64 id = 1;
+  string title = 2;
+  Platform platform = 3;
+  bool finished = 4;
+  int32 rating = 5; // Should be an integer in [1,5]
   repeated Genre genre = 6;
   string creation_date = 7;
 }
