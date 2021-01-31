@@ -9,7 +9,10 @@ Tech:
 - [JUnit](https://junit.org/junit5/)
 - [Mockito](https://site.mockito.org/)
 - [Gradle](https://gradle.org/)
+- [Postgres](https://www.postgresql.org/)
+- [Flyway](https://flywaydb.org/)
 
 Useful tools:
 - [BloomRPC](https://github.com/uw-labs/bloomrpc)
 - [Insomnia](https://insomnia.rest/)
+- [DBeaver](https://dbeaver.io/)
