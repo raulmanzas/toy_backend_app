@@ -9,5 +9,6 @@ data class Game(
     val finished: Boolean = false,
     val rating: Int = 0,
     val genre: Collection<Genre> = emptyList(),
-    val creationDate: LocalDateTime = LocalDateTime.now()
+    val creationDate: LocalDateTime = LocalDateTime.now(),
+    val updatedAt: LocalDateTime = LocalDateTime.now()
 )

@@ -1,3 +1,14 @@
 micronaut:
   application:
     name: toyapp
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+      clean-schema: false
+      url: ${DATABASE_URL:`jdbc:postgresql://localhost:5432/toyapp`}
+      user: ${DB_USER}
+      password: ${DB_PASSWORD}
+      schemas: toyapp
+      default-schema: toyapp

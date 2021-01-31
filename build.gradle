@@ -35,6 +35,10 @@ dependencies {
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     testImplementation("org.mockito:mockito-core")
     testImplementation("io.micronaut:micronaut-http-client")
+
+    // Database
+    runtime("io.micronaut.flyway:micronaut-flyway")
+    runtime("org.postgresql:postgresql")
 }
 
 
