@@ -9,7 +9,7 @@ import io.grpc.stub.StreamObserver
 import javax.inject.Singleton
 
 @Singleton
-class GameBacklogEndpoint : GameBacklogServiceImplBase() {
+class GameBacklogEndpoint: GameBacklogServiceImplBase() {
     override fun addToBacklog(request: AddToBacklogRequest?, responseObserver: StreamObserver<AddToBacklogResponse>?) {
         super.addToBacklog(request, responseObserver)
     }
