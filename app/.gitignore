@@ -64,5 +64,5 @@ buildSrcTmp/
 distTmp/
 outTmp/
 .gradle/
-app/.env
 .data
+.env

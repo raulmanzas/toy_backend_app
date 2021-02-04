@@ -1,0 +1,10 @@
+flyway:
+  datasources:
+    default:
+      enabled: true
+      clean-schema: false
+      url: ${DATABASE_URL:`jdbc:postgresql://localhost:5432/toyapp`}
+      user: postgres
+      password: postgres
+      schemas: toyapp
+      default-schema: toyapp
