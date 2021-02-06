@@ -7,23 +7,22 @@ import com.learning.generated.grpc.AddToBacklogRequest
 import com.learning.generated.grpc.AddToBacklogResponse
 import com.learning.generated.grpc.FindGameRequest
 import com.learning.generated.grpc.FindGameResponse
-import com.learning.generated.grpc.GameBacklogServiceGrpc.GameBacklogServiceImplBase
+import com.learning.generated.grpc.GameBacklogServiceGrpcKt.GameBacklogServiceCoroutineImplBase
 import io.grpc.stub.StreamObserver
 import javax.inject.Singleton
 
 @Singleton
 class GameBacklogEndpoint(
     private val gameBacklogService: GameBacklogService
-): GameBacklogServiceImplBase() {
+): GameBacklogServiceCoroutineImplBase() {
 
-    override fun addToBacklog(request: AddToBacklogRequest?, responseObserver: StreamObserver<AddToBacklogResponse>?) {
+    override suspend fun addToBacklog(request: AddToBacklogRequest): AddToBacklogResponse {
         val newGame = request!!.asModel()
         val game = gameBacklogService.addGameToBacklog(newGame)
-        responseObserver!!.onNext(game.asGrpcMessage())
-        responseObserver.onCompleted()
+        return game.asGrpcMessage()
     }
 
-    override fun findGame(request: FindGameRequest?, responseObserver: StreamObserver<FindGameResponse>?) {
-        super.findGame(request, responseObserver)
+    override suspend fun findGame(request: FindGameRequest): FindGameResponse {
+        return super.findGame(request)
     }
 }
