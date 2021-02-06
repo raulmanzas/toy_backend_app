@@ -11,7 +11,7 @@ class Game(
     var finished: Boolean = false,
     var rating: Int = 0,
     var genre: Collection<Genre> = emptyList(),
-    var creationDate: LocalDateTime = LocalDateTime.now(),
+    var createdAt: LocalDateTime = LocalDateTime.now(),
     var updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
     companion object {

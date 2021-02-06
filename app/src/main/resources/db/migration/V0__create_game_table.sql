@@ -5,6 +5,6 @@ create table game (
     finished boolean not null,
     rating smallint not null,
     genre varchar(50) not null,
-    creation_date timestamp not null,
-    updated_at timestamp not null
+    created_at timestamp not null default now(),
+    updated_at timestamp not null default now()
 );
