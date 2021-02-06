@@ -8,3 +8,21 @@ flyway:
       password: postgres
       schemas: toyapp
       default-schema: toyapp
+
+datasources:
+  default:
+    url: ${DATABASE_URL:`jdbc:postgresql://localhost:5432/toyapp`}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    schema-generate: NONE
+    dialect: POSTGRES
+
+jpa:
+  default:
+    packages-to-scan:
+      - "com.learning.data"
+    properties:
+      hibernate:
+        show_sql: false
+

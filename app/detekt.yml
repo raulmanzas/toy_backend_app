@@ -1,5 +1,5 @@
 # check https://github.com/detekt/detekt/blob/master/detekt-core/src/main/resources/default-detekt-config.yml to see
-# the defaults
+# the defaults, as these are just the ones I'm manually customizing
 
 style:
   active: true

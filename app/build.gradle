@@ -42,10 +42,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
 
     // Database
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("io.micronaut.sql:micronaut-hibernate-jpa")
     runtime("io.micronaut.flyway:micronaut-flyway")
     runtime("org.postgresql:postgresql")
 }
-
 
 application {
     mainClass.set("com.learning.ApplicationKt")
@@ -66,9 +67,8 @@ tasks {
             jvmTarget = "11"
         }
     }
-
-
 }
+
 sourceSets {
     main {
         java {
@@ -96,8 +96,8 @@ protobuf {
 detekt {
     buildUponDefaultConfig = true
     config = files("$projectDir/detekt.yml")
-
     reports {
+        // can be useful if the report has too many items
         html.enabled = true
         sarif.enabled = true
     }
