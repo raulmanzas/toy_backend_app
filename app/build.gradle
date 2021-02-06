@@ -36,6 +36,7 @@ dependencies {
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     testImplementation("org.mockito:mockito-core")
     testImplementation("io.micronaut:micronaut-http-client")
+    implementation("com.github.javafaker:javafaker:${fakerVersion}")
 
     // kotlin support on proto compilation
     implementation("io.grpc:grpc-kotlin-stub:${grpcKotlinVersion}")

@@ -7,7 +7,7 @@ import java.util.Optional
 import javax.inject.Singleton
 
 @Singleton
-class GameBacklogServiceImpl(
+internal class GameBacklogServiceImpl(
     private val gameRepository: GameRepository
 ): GameBacklogService {
 
