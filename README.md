@@ -8,12 +8,12 @@ Tech:
 - [Logback](https://logback.qos.ch/)
 - [JUnit](https://junit.org/junit5/)
 - [Mockito](https://site.mockito.org/)
+- [Faker](https://github.com/DiUS/java-faker)
 - [Gradle](https://gradle.org/)
 - [Postgres](https://www.postgresql.org/)
 - [Flyway](https://flywaydb.org/)
 - [Hibernate](http://hibernate.org/orm/)
 - [Detekt](https://detekt.github.io/)
-- [Faker](https://github.com/DiUS/java-faker)
 
 Useful tools:
 - [BloomRPC](https://github.com/uw-labs/bloomrpc)
