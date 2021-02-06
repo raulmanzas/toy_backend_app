@@ -14,8 +14,13 @@ class Game(
     var creationDate: LocalDateTime = LocalDateTime.now(),
     var updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
+    companion object {
+        const val RATING_LOWER_BOUND = 1
+        const val RATING_UPPER_BOUND = 5
+    }
+
     fun validate() {
-        if (rating < 1 || rating > 5) {
+        if (rating < RATING_LOWER_BOUND || rating > RATING_UPPER_BOUND) {
             throw RatingNotInRangeException()
         }
         if (title.isNullOrBlank()) {
