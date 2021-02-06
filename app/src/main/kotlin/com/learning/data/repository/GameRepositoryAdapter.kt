@@ -6,7 +6,7 @@ import java.util.*
 import javax.inject.Singleton
 
 @Singleton
-class GameRepositoryImpl: GameRepository {
+class GameRepositoryAdapter: GameRepository {
 
     override fun persist(game: Game): Game {
         return Game()
