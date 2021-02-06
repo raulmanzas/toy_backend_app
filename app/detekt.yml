@@ -1,0 +1,25 @@
+# check https://github.com/detekt/detekt/blob/master/detekt-core/src/main/resources/default-detekt-config.yml to see
+# the defaults
+
+style:
+  active: true
+  ReturnCount:
+    active: true
+    max: 3
+    excludedFunctions: 'equals'
+    excludeLabeled: false
+    excludeReturnFromLambda: true
+    excludeGuardClauses: false
+  TrailingWhitespace:
+    active: true
+  UseDataClass:
+    active: true
+    allowVars: false
+  WildcardImport:
+    active: true
+    excludes: []
+    excludeImports: [ 'java.util.*' ]
+
+performance:
+  SpreadOperator:
+    active: false

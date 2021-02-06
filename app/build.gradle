@@ -5,6 +5,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "6.1.0"
     id("io.micronaut.application") version "1.3.2"
     id("com.google.protobuf") version "0.8.13"
+    id("io.gitlab.arturbosch.detekt") version "1.15.0"
 }
 
 version = "0.1"
@@ -36,6 +37,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core")
     testImplementation("io.micronaut:micronaut-http-client")
 
+    // kotlin support on proto compilation
     implementation("io.grpc:grpc-kotlin-stub:${grpcKotlinVersion}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
 
@@ -88,5 +90,15 @@ protobuf {
             grpc {}
             grpckt {}
         }
+    }
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    config = files("$projectDir/detekt.yml")
+
+    reports {
+        html.enabled = true
+        sarif.enabled = true
     }
 }

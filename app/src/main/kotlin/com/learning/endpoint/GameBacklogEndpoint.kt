@@ -8,7 +8,6 @@ import com.learning.generated.grpc.AddToBacklogResponse
 import com.learning.generated.grpc.FindGameRequest
 import com.learning.generated.grpc.FindGameResponse
 import com.learning.generated.grpc.GameBacklogServiceGrpcKt.GameBacklogServiceCoroutineImplBase
-import io.grpc.stub.StreamObserver
 import javax.inject.Singleton
 
 @Singleton
@@ -17,7 +16,7 @@ class GameBacklogEndpoint(
 ): GameBacklogServiceCoroutineImplBase() {
 
     override suspend fun addToBacklog(request: AddToBacklogRequest): AddToBacklogResponse {
-        val newGame = request!!.asModel()
+        val newGame = request.asModel()
         val game = gameBacklogService.addGameToBacklog(newGame)
         return game.asGrpcMessage()
     }

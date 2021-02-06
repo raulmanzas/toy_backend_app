@@ -11,6 +11,7 @@ Tech:
 - [Gradle](https://gradle.org/)
 - [Postgres](https://www.postgresql.org/)
 - [Flyway](https://flywaydb.org/)
+- [Detekt](https://detekt.github.io/)
 
 Useful tools:
 - [BloomRPC](https://github.com/uw-labs/bloomrpc)
