@@ -12,7 +12,7 @@ fun AddToBacklogRequest.asModel(): Game {
         title = this.title,
         finished = this.finished,
         rating = this.rating,
-        genre = this.genreList.map { Genre.valueOf(it.name) },
+        genre = Genre.valueOf(this.genre.name),
         platform = Platform.valueOf(this.platform.name)
     )
 }
@@ -25,6 +25,6 @@ fun Game.asGrpcMessage(): AddToBacklogResponse {
         finished = finished
         rating = rating
         creationDate = creationDate
-        addAllGenre(genre.map { GrpcGenre.valueOf(genre.toString()) })
+        genre = GrpcGenre.forNumber(genre.number)
     }.build()
 }

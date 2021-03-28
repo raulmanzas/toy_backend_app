@@ -57,9 +57,9 @@ class GameTest {
     }
 
     @Test
-    fun `when game genre is empty should throw validation error`() {
+    fun `when game genre is null should throw validation error`() {
         val invalidGame = buildValidGameInstance()
-        invalidGame.genre = emptyList()
+        invalidGame.genre = null
         assertThrows(FieldNotInformedException::class.java) {
             invalidGame.validate()
         }
@@ -87,7 +87,7 @@ class GameTest {
             platform = Platform.NINTENDO_SWITCH,
             finished = true,
             rating = faker.random().nextInt(1, 5),
-            genre = listOf(Genre.RPG, Genre.ACTION)
+            genre = Genre.ACTION
         )
     }
 }

@@ -21,10 +21,12 @@ enum Platform {
   PLAYSTATION_4_PRO = 6;
   PLAYSTATION_5 = 7;
   WINDOWS = 8;
+  NINTENDO_SWITCH_LITE = 9;
 }
 
 enum Genre {
   ACTION = 0;
+  PLATFORM = 1;
   ADVENTURE = 2;
   RPG = 3;
   SHOOTER = 4;
@@ -38,7 +40,7 @@ message AddToBacklogRequest {
   Platform platform = 2;
   bool finished = 3;
   int32 rating = 4;
-  repeated Genre genre = 5;
+  Genre genre = 5;
 }
 
 message AddToBacklogResponse {
@@ -47,7 +49,7 @@ message AddToBacklogResponse {
   Platform platform = 3;
   bool finished = 4;
   int32 rating = 5; // Should be an integer in [1,5]
-  repeated Genre genre = 6;
+  Genre genre = 6;
   string creation_date = 7;
 }
 
@@ -61,6 +63,6 @@ message FindGameResponse {
   Platform platform = 3;
   bool finished = 4;
   int32 rating = 5; // Should be an integer in [1,5]
-  repeated Genre genre = 6;
+  Genre genre = 6;
   string creation_date = 7;
 }

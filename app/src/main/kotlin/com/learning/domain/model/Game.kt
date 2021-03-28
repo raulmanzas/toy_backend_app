@@ -10,7 +10,7 @@ class Game(
     var platform: Platform? = null,
     var finished: Boolean = false,
     var rating: Int = 0,
-    var genre: Collection<Genre> = emptyList(),
+    var genre: Genre? = null,
     var createdAt: LocalDateTime = LocalDateTime.now(),
     var updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
@@ -26,7 +26,7 @@ class Game(
         if (title.isNullOrBlank()) {
             throw FieldNotInformedException("title")
         }
-        if (genre.isEmpty()) {
+        if (genre == null) {
             throw FieldNotInformedException("genre")
         }
         if (platform == null) {
