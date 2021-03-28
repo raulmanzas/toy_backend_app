@@ -14,6 +14,7 @@ Tech:
 - [Flyway](https://flywaydb.org/)
 - [Hibernate](http://hibernate.org/orm/)
 - [Detekt](https://detekt.github.io/)
+- [GitHub Actions](https://github.com/features/actions)
 
 Useful tools:
 - [BloomRPC](https://github.com/uw-labs/bloomrpc)
