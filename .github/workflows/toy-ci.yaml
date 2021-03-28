@@ -3,7 +3,7 @@ name: Toy-CI
 on:
   push:
     branches:
-      - 'setup/ci_pipeline'
+      - 'main'
 
 jobs:
   build:
