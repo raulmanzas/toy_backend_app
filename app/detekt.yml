@@ -22,6 +22,10 @@ style:
   ThrowsCount:
     active: false
 
+exceptions:
+  TooGenericExceptionCaught:
+    active: false
+
 complexity:
   active: true
   LongParameterList:

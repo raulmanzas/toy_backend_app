@@ -2,6 +2,7 @@ package com.learning.endpoint
 
 import com.learning.domain.service.GameBacklogService
 import com.learning.endpoint.mapper.asGrpcMessage
+import com.learning.endpoint.mapper.asGrpcStatusError
 import com.learning.endpoint.mapper.asModel
 import com.learning.generated.grpc.AddToBacklogRequest
 import com.learning.generated.grpc.AddToBacklogResponse
@@ -21,11 +22,16 @@ class GameBacklogEndpoint(
     }
 
     override suspend fun addToBacklog(request: AddToBacklogRequest): AddToBacklogResponse {
-        logger.info("received request to add game to backlog: {}", request)
-        val newGame = request.asModel()
-        val persistedGame = gameBacklogService.addGameToBacklog(newGame).asGrpcMessage()
-        logger.info("response to add game to backlog request for {} -> {}", newGame.title, persistedGame)
-        return persistedGame
+        try {
+            logger.info("received request to add game to backlog: {}", request)
+            val newGame = request.asModel()
+            val persistedGame = gameBacklogService.addGameToBacklog(newGame).asGrpcMessage()
+            logger.info("response to add game to backlog request for {} -> {}", newGame.title, persistedGame)
+            return persistedGame
+        } catch (e: Exception){
+            logger.error("error while processing addToBacklog: {} ", e.message)
+            throw e.asGrpcStatusError()
+        }
     }
 
     override suspend fun findGame(request: FindGameRequest): FindGameResponse {

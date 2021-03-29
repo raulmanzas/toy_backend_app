@@ -26,4 +26,11 @@ internal class GameRepositoryAdapter(
     override fun findById(id: Long): Optional<Game> {
         return Optional.empty()
     }
+
+    override fun findGameByTitle(title: String): Optional<Game> {
+        val gameEntity = jpaGameRepository.findByTitle(title)
+        if (gameEntity.isEmpty)
+            return Optional.empty()
+        return Optional.of(gameEntity.get().asDomain())
+    }
 }

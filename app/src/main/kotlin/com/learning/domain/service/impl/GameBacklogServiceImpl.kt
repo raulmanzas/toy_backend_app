@@ -1,5 +1,6 @@
 package com.learning.domain.service.impl
 
+import com.learning.domain.exception.GameAlreadyOnBacklogException
 import com.learning.domain.model.Game
 import com.learning.domain.persistence.GameRepository
 import com.learning.domain.service.GameBacklogService
@@ -19,6 +20,10 @@ internal class GameBacklogServiceImpl(
 
     override fun addGameToBacklog(game: Game): Game {
         game.validate()
+        gameRepository.findGameByTitle(game.title).ifPresent {
+            logger.error("Duplicate game found: ${it.title}")
+            throw GameAlreadyOnBacklogException(it.title, it.id)
+        }
         logger.info("game {} is valid and is going to be persisted", game.title)
         return gameRepository.persist(game)
     }
