@@ -23,8 +23,9 @@ class GameBacklogEndpoint(
     override suspend fun addToBacklog(request: AddToBacklogRequest): AddToBacklogResponse {
         logger.info("received request to add game to backlog: {}", request)
         val newGame = request.asModel()
-        val game = gameBacklogService.addGameToBacklog(newGame)
-        return game.asGrpcMessage()
+        val persistedGame = gameBacklogService.addGameToBacklog(newGame).asGrpcMessage()
+        logger.info("response to add game to backlog request for {} -> {}", newGame.title, persistedGame)
+        return persistedGame
     }
 
     override suspend fun findGame(request: FindGameRequest): FindGameResponse {

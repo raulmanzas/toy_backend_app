@@ -14,7 +14,7 @@ internal class GameBacklogServiceImpl(
 ): GameBacklogService {
 
     companion object {
-        private val logger = LoggerFactory.getLogger(GameBacklogEndpoint::class.java)
+        private val logger = LoggerFactory.getLogger(GameBacklogServiceImpl::class.java)
     }
 
     override fun addGameToBacklog(game: Game): Game {

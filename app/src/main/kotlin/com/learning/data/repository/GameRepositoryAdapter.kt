@@ -2,14 +2,25 @@ package com.learning.data.repository
 
 import com.learning.domain.model.Game
 import com.learning.domain.persistence.GameRepository
+import com.learning.data.entity.asDomain
+import com.learning.data.entity.asEntity
+import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Singleton
 
 @Singleton
-class GameRepositoryAdapter: GameRepository {
+internal class GameRepositoryAdapter(
+    private val jpaGameRepository: JpaGameRepository
+): GameRepository {
+
+    companion object {
+        private val logger = LoggerFactory.getLogger(GameRepositoryAdapter::class.java)
+    }
 
     override fun persist(game: Game): Game {
-        return Game()
+        val persistedGame = jpaGameRepository.save(game.asEntity())
+        logger.info("game {} persisted with id {}", persistedGame.title, persistedGame.id)
+        return persistedGame.asDomain()
     }
 
     override fun findById(id: Long): Optional<Game> {

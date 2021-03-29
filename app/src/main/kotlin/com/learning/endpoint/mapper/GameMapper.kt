@@ -6,6 +6,7 @@ import com.learning.domain.model.Platform
 import com.learning.generated.grpc.AddToBacklogRequest
 import com.learning.generated.grpc.AddToBacklogResponse
 import com.learning.generated.grpc.Genre as GrpcGenre
+import com.learning.generated.grpc.Platform as GrpcPlatform
 
 fun AddToBacklogRequest.asModel(): Game {
     return Game(
@@ -18,13 +19,14 @@ fun AddToBacklogRequest.asModel(): Game {
 }
 
 fun Game.asGrpcMessage(): AddToBacklogResponse {
+    val model = this
     return AddToBacklogResponse.newBuilder().apply {
-        id = id
-        title = title
-        platform = platform
-        finished = finished
-        rating = rating
-        creationDate = creationDate
-        genre = GrpcGenre.forNumber(genre.number)
+        id = model.id
+        title = model.title
+        platform = GrpcPlatform.valueOf(model.platform!!.name)
+        finished = model.finished
+        rating = model.rating
+        creationDate = model.createdAt.toString()
+        genre = GrpcGenre.valueOf(model.genre!!.name)
     }.build()
 }
